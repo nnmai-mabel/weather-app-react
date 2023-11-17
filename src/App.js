@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import { Outlet } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<Navbar bg="light" data-bs-theme="light">
+				<Container>
+					<Navbar.Brand href="/">Weather App</Navbar.Brand>
+					<Nav className="me-auto">
+						<Nav.Link href="/Home">Home</Nav.Link>
+						<Nav.Link href="/CurrentWeather">Current Weather</Nav.Link>
+					</Nav>
+				</Container>
+			</Navbar>
+			<Outlet />
+		</>
+	);
 }
 
 export default App;
