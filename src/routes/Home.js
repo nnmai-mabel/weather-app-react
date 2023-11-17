@@ -6,6 +6,7 @@ const Home = ({ }) => {
             </h2>
             <hr />
             <p>This project presents current weather in any city.</p>
+            <p>Testing branch</p>
         </div >
     )
 }
