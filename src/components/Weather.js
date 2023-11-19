@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import CurrentWeather from "./CurrentWeather/CurrentWeather"
+import Forecast5days from './Forecast5days/Forecast5days';
+import ApiKey from './ApiKey'
 
 const Weather = () => {
 
@@ -24,12 +26,16 @@ const Weather = () => {
     // Set inital query for searching countries in the region
     const [cityNameQuery, setCityNameQuery] = useState('');
 
+    // Call the ApiKey function to get the API key string
+    const apiKey = ApiKey();
+
     // Fetch current weather data
     useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityNameQuery}&appid=3498afc9f7c40a107d258318ec8a5ee7&units=metric`)
+        
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityNameQuery}&appid=${apiKey}&units=metric`)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
 
                 // Update data fetched from API
                 setData(data)
@@ -54,6 +60,22 @@ const Weather = () => {
             });
     }, [cityNameQuery]) // cityNameQuery is a reactive value and needs to change on a re-render -> put in dependency list
 
+    // Fetch forecast in 5 days data
+    useEffect(() => {
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityNameQuery}&appid=${apiKey}&units=metric`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Forecast")
+                console.log(data)
+
+                // Update data fetched from API
+                
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, [cityNameQuery]) // cityNameQuery is a reactive value and needs to change on a re-render -> put in dependency list
+
     //Create the searchQuery() function after the useEffect hook to capture the textbox text value then use it to update the query state
     function searchQuery(evt) {
         const value = document.querySelector('[name="searchText"]').value;
@@ -63,6 +85,7 @@ const Weather = () => {
     return (
         <div>
             <h2 className="text-center">Weather</h2>
+            <p>{`https://api.openweathermap.org/data/2.5/forecast?q=${cityNameQuery}&appid=${<ApiKey />}&units=metric`}</p>
             <div className="col-md-5 mb-2">
                 <input type="text" name="searchText" className="form-control" placeholder="Search Cities" />
             </div>
@@ -90,6 +113,8 @@ const Weather = () => {
                 name={name}
                 cod={cod}
             />
+
+            <Forecast5days />
         </div >
     )
 }
