@@ -13,7 +13,6 @@ function App() {
 					<Nav className="me-auto">
 						<Nav.Link href="/Home">Home</Nav.Link>
 						<Nav.Link href="/Weather">Weather</Nav.Link>
-						<Nav.Link href="/CurrentWeather">Current Weather</Nav.Link>
 					</Nav>
 				</Container>
 			</Navbar>

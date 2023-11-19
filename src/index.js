@@ -16,7 +16,6 @@ root.render(
                     <Route path="" element={<Home />} /> {/*route when URL is localhost:[port], order matters */}
                     <Route path="Home" element={<Home />} />
                     <Route path="Weather" element={<Weather />} />
-                    <Route path="CurrentWeather" element={<CurrentWeather />} />
                     
                     <Route path="*" element={<Home />} /> {/*route that matches anything */}
                 </Route>
