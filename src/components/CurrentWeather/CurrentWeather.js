@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import Weather from './Weather';
 import Coordinate from './Coordinate';
 import MainWeather from './MainWeather';
@@ -8,77 +7,21 @@ import Rain from './Rain';
 import Snow from './Snow';
 import Sys from './Sys';
 
-const CurrentWeather = ({ }) => {
-
-    // Set current weather
-    const [data, setData] = useState({})
-    const [coordinate, setCoordinate] = useState({})
-    const [weather, setWeather] = useState([])
-    const [base, setBase] = useState('')
-    const [mainWeather, setMainWeather] = useState({})
-    const [visbility, setVisibility] = useState('')
-    const [wind, setWind] = useState({})
-    const [clouds, setClouds] = useState({})
-    const [rain, setRain] = useState({})
-    const [snow, setSnow] = useState({})
-    const [dataTime, setDataTime] = useState(0)
-    const [sys, setSys] = useState({})
-    const [timezone, setTimezone] = useState(0)
-    const [id, setId] = useState(0)
-    const [name, setName] = useState('')
-    const [cod, setCod] = useState(0)
-
-    // Set inital query for searching countries in the region
-    const [cityNameQuery, setCityNameQuery] = useState('');
-
-    useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityNameQuery}&appid=3498afc9f7c40a107d258318ec8a5ee7&units=metric`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-
-                // Update data fetched from API
-                setData(data)
-                setCoordinate(data.coord)
-                setWeather(data.weather)
-                setBase(data.base)
-                setMainWeather(data.main)
-                setVisibility(data.visibility)
-                setWind(data.wind)
-                setClouds(data.clouds)
-                setRain(data.rain)
-                setSnow(data.snow)
-                setDataTime(data.dt)
-                setSys(data.sys)
-                setTimezone(data.timezone)
-                setId(data.id)
-                setName(data.name)
-                setCod(data.cod)
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }, [cityNameQuery]) // cityNameQuery is a reactive value and needs to change on a re-render -> put in dependency list
-
-    //Create the searchQuery() function after the useEffect hook to capture the textbox text value then use it to update the query state
-    function searchQuery(evt) {
-        const value = document.querySelector('[name="searchText"]').value;
-        setCityNameQuery(value);
-    }
+const CurrentWeather = ({ data, coordinate, weather, base, mainWeather, visibility, wind, clouds, rain, snow, dataTime, sys, timezone, id, name, cod }) => {
 
     // Convert time to another format
     function convertUnixTimestampToDateTime(timestamp) {
         const date = new Date(timestamp * 1000);
-    
+
         const year = date.getFullYear();
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const day = date.getDate().toString().padStart(2, '0');
         const hours = date.getHours().toString().padStart(2, '0');
         const minutes = date.getMinutes().toString().padStart(2, '0');
         const seconds = date.getSeconds().toString().padStart(2, '0');
-    
+
         const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-        
+
         return formattedDateTime; // can use toISOString(), toLocaleString(), or other Date methods for formatting;
     }
 
@@ -87,7 +30,7 @@ const CurrentWeather = ({ }) => {
 
         // Since timezone is Shift in seconds from UTC
         // Divide the timezone by 3600 seconds (the seconds in 1h) will result in the GMT
-        
+
         const gmtTime = timestamp / 3600
         return `GMT +${gmtTime}`;
     }
@@ -99,15 +42,7 @@ const CurrentWeather = ({ }) => {
             </h2>
             <hr />
             <p>Temperature now</p>
-            <div className="col-md-5 mb-2">
-                <input type="text" name="searchText" className="form-control" placeholder="Search Cities" />
-            </div>
-            <div className="col-md-2 mb-2">
-
-                {/*Attach a ReactJS event to the button called “searchQuery” using the ReactJS syntax onClick={searchQuery}*/}
-                <button type="button" className="btn btn-primary" onClick={searchQuery}>Search</button>
-            </div>
-
+            <p>{cod}</p>
             {/* If data is successfully fetched through correct city name */}
             {cod === 200 ? (
                 <div>
@@ -147,7 +82,7 @@ const CurrentWeather = ({ }) => {
                     />
 
                     {/* Visibility */}
-                    <h2>Visibility {visbility}</h2>
+                    <h2>Visibility {visibility}</h2>
 
                     {/* Wind */}
                     <Wind
@@ -193,7 +128,7 @@ const CurrentWeather = ({ }) => {
 
                     {/* Timezone */}
                     <h2>Timezone {timezone}</h2>
-                    
+
                     <h2>Timezone {shiftFromUTCToGMT(timezone)}</h2>
                 </div>
 
