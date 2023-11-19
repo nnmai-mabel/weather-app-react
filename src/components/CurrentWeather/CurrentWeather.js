@@ -112,7 +112,7 @@ const CurrentWeather = ({ }) => {
             {cod === 200 ? (
                 <div>
                     <h1>{name}</h1>
-                    <img src={`https://openweathermap.org/images/flags/${sys.country.toLowerCase()}.png`} />
+                    <img src={`https://openweathermap.org/images/flags/${sys.country.toLowerCase()}.png`} alt={`${sys.country}`} />
                     {/* Coordinate of the city */}
                     <Coordinate
                         longtitude={coordinate.lon}
