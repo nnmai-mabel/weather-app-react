@@ -8,8 +8,6 @@ import Rain from './Rain';
 import Snow from './Snow';
 import Sys from './Sys';
 
-
-
 const CurrentWeather = ({ }) => {
 
     // Set current weather
@@ -81,8 +79,19 @@ const CurrentWeather = ({ }) => {
     
         const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
         
-        return formattedDateTime;
+        return formattedDateTime; // can use toISOString(), toLocaleString(), or other Date methods for formatting;
     }
+
+    // Convert timezone to GMT
+    function shiftFromUTCToGMT(timestamp) {
+
+        // Since timezone is Shift in seconds from UTC
+        // Divide the timezone by 3600 seconds (the seconds in 1h) will result in the GMT
+        
+        const gmtTime = timestamp / 3600
+        return `GMT +${gmtTime}`;
+    }
+
     return (
         <div>
             <h2 className="text-center">
@@ -184,6 +193,8 @@ const CurrentWeather = ({ }) => {
 
                     {/* Timezone */}
                     <h2>Timezone {timezone}</h2>
+                    
+                    <h2>Timezone {shiftFromUTCToGMT(timezone)}</h2>
                 </div>
 
             ) : (

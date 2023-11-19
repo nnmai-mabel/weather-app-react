@@ -5,7 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './routes/Home';
-import CurrentWeather from './components/CurrentWeather';
+import Weather from './components/Weather';
+import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ root.render(
                 <Route path="/" element={<App />}>
                     <Route path="" element={<Home />} /> {/*route when URL is localhost:[port], order matters */}
                     <Route path="Home" element={<Home />} />
+                    <Route path="Weather" element={<Weather />} />
                     <Route path="CurrentWeather" element={<CurrentWeather />} />
                     
                     <Route path="*" element={<Home />} /> {/*route that matches anything */}
