@@ -6,34 +6,10 @@ import Clouds from './Clouds';
 import Rain from './Rain';
 import Snow from './Snow';
 import Sys from './Sys';
+import ConvertUnixTimestampToDateTime from '../ConvertTime/ConvertUnixTimestampToDateTime';
+import ShiftFromUTCToGMT from '../ConvertTime/ShiftFromUTCToGMT';
 
-const CurrentWeather = ({ data, coordinate, weather, base, mainWeather, visibility, wind, clouds, rain, snow, dataTime, sys, timezone, id, name, cod }) => {
-
-    // Convert time to another format
-    function convertUnixTimestampToDateTime(timestamp) {
-        const date = new Date(timestamp * 1000);
-
-        const year = date.getFullYear();
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const day = date.getDate().toString().padStart(2, '0');
-        const hours = date.getHours().toString().padStart(2, '0');
-        const minutes = date.getMinutes().toString().padStart(2, '0');
-        const seconds = date.getSeconds().toString().padStart(2, '0');
-
-        const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-
-        return formattedDateTime; // can use toISOString(), toLocaleString(), or other Date methods for formatting;
-    }
-
-    // Convert timezone to GMT
-    function shiftFromUTCToGMT(timestamp) {
-
-        // Since timezone is Shift in seconds from UTC
-        // Divide the timezone by 3600 seconds (the seconds in 1h) will result in the GMT
-
-        const gmtTime = timestamp / 3600
-        return `GMT +${gmtTime}`;
-    }
+const CurrentWeather = ({ data, coordinate, weather, base, mainWeather, visibility, wind, clouds, rain, snow, dataTime, sys, timezone, id, name }) => {
 
     return (
         <div>
@@ -41,10 +17,9 @@ const CurrentWeather = ({ data, coordinate, weather, base, mainWeather, visibili
                 Current Weather
             </h2>
             <hr />
-            <p>Temperature now</p>
-            <p>{cod}</p>
+            <p>{data.cod}</p>
             {/* If data is successfully fetched through correct city name */}
-            {cod === 200 ? (
+            {data.cod === 200 ? (
                 <div>
                     <h1>{name}</h1>
                     <img src={`https://openweathermap.org/images/flags/${sys.country.toLowerCase()}.png`} alt={`${sys.country}`} />
@@ -114,7 +89,7 @@ const CurrentWeather = ({ data, coordinate, weather, base, mainWeather, visibili
                     ) : (<h1>Snow is not available</h1>)}
 
                     {/* Time of data calculation, unix, UTC */}
-                    <h1>Data time: {convertUnixTimestampToDateTime(dataTime)}</h1>
+                    <h1>Data time: {ConvertUnixTimestampToDateTime(dataTime)}</h1>
 
                     {/* Sys */}
                     <Sys
@@ -122,14 +97,14 @@ const CurrentWeather = ({ data, coordinate, weather, base, mainWeather, visibili
                         id={sys.id}
                         message={sys.message}
                         country={sys.country}
-                        sunrise={convertUnixTimestampToDateTime(sys.sunrise)}
-                        sunset={convertUnixTimestampToDateTime(sys.sunset)}
+                        sunrise={ConvertUnixTimestampToDateTime(sys.sunrise)}
+                        sunset={ConvertUnixTimestampToDateTime(sys.sunset)}
                     />
 
                     {/* Timezone */}
                     <h2>Timezone {timezone}</h2>
 
-                    <h2>Timezone {shiftFromUTCToGMT(timezone)}</h2>
+                    <h2>Timezone {ShiftFromUTCToGMT(timezone)}</h2>
                 </div>
 
             ) : (
