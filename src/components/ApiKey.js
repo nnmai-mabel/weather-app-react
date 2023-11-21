@@ -3,7 +3,7 @@
 // Clik on your account name -> My API keys -> Generate free API key
 const ApiKey = () => {
     return (
-        '[APIkey]'
+        '919ab8f1aad04aab2a4c11029ccf4654'
     )
 }
 
