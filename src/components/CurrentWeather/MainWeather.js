@@ -8,11 +8,9 @@ const MainWeather = (props) => {
                 <Card.Body>
                     <Card.Title>Main Weather</Card.Title>
                     {/* <Card.Text>Temperature {props.temp}</Card.Text> */}
-                    <Card.Text>Feels like {props.feelsLike}</Card.Text>
                     {/* <Card.Text>Temperature Min {props.tempMin}</Card.Text>
                     <Card.Text>Temperature Max {props.tempMax}</Card.Text> */}
-                    <Card.Text>Pressure {props.pressure}</Card.Text>
-                    <Card.Text>Humidity {props.humidity}</Card.Text>
+                    
                     <Card.Text>Sea Level {props.seaLevel}</Card.Text>
                     <Card.Text>Ground Level {props.groundLevel}</Card.Text>
                 </Card.Body>

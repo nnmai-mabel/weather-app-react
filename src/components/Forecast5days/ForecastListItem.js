@@ -10,12 +10,12 @@ import SnowForecast from './SnowForecast';
 
 const ForecastListItem = ({ index, dt, main, weather, clouds, wind, visibility, pop, rain, snow, sys, dtTxt }) => {
     return (
-        <div>
-            <Card style={{ width: '18rem' }}>
+        <>
+            <Card style={{ width: '18rem' }} className="mt-4">
                 <Card.Body>
-                    <Card.Title>Forecast Item {index}</Card.Title>
+                    {/* <Card.Title>Forecast Item {index}</Card.Title> */}
                     <Card.Text>
-                        Time of data forecasted {dt}
+                        <p className="text-center">{dt}</p>
 
                         {/* Main weather forecast */}
                         <MainWeatherForecast
@@ -42,47 +42,47 @@ const ForecastListItem = ({ index, dt, main, weather, clouds, wind, visibility, 
                         ))}
 
                         {/* Clouds */}
-                        <CloudsForecast
+                        {/* <CloudsForecast
                             all={clouds.all}
-                        />
+                        /> */}
 
                         {/* Wind */}
-                        <WindForecast
+                        {/* <WindForecast
                             speed={wind.speed}
                             direction={wind.deg}
                             gust={wind.gust}
-                        />
+                        /> */}
 
-                        <h5>Visibility {visibility}</h5>
-                        <h5>Probability of Precipitation {pop}</h5>
+                        {/* <h5>Visibility {visibility}</h5>
+                        <h5>Probability of Precipitation {pop}</h5> */}
 
                         {/* Rain */}
-                        {rain ? (
+                        {/* {rain ? (
                         <RainForecast
                             rain3h={rain['3h']}
                         />
                         ) : ("Rain not available")
-                        }
+                        } */}
 
                         {/* Snow */}
-                        {snow ? (
+                        {/* {snow ? (
                         <SnowForecast
                             snow3h={snow['3h']}
                         />
                         ) : ("Snow not available")
-                        }
+                        } */}
 
                         {/* Part of the day */}
-                        <SysForecast
+                        {/* <SysForecast
                             pod={sys.pod}
-                        />
+                        /> */}
 
-                        <h5>Time of data forecasted dtTxt {dtTxt}</h5>
+                        {/* <h5>Time of data forecasted dtTxt {dtTxt}</h5> */}
 
                     </Card.Text>
                 </Card.Body>
             </Card>
-        </div >
+        </>
     )
 }
 
