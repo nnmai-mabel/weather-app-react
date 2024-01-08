@@ -7,15 +7,16 @@ import './App.css';
 function App() {
 	return (
 		<>
-			<Navbar bg="light" data-bs-theme="light">
-				<Container>
-					<Navbar.Brand href="/">Weather App</Navbar.Brand>
-					<Nav className="me-auto">
-						<Nav.Link href="/Home">Home</Nav.Link>
-						<Nav.Link href="/Weather">Weather</Nav.Link>
-					</Nav>
-				</Container>
-			</Navbar>
+			
+			{/* <Navbar bg="light" data-bs-theme="light"> */}
+				{/* <Container> */}
+					{/* <Navbar.Brand href="/">Weather App</Navbar.Brand> */}
+					{/* <Nav className="me-auto"> */}
+						{/* <Nav.Link href="/Home">Home</Nav.Link> */}
+						{/* <Nav.Link href="/Weather">Weather</Nav.Link> */}
+					{/* </Nav> */}
+				{/* </Container> */}
+			{/* </Navbar> */}
 			<Outlet />
 		</>
 	);
