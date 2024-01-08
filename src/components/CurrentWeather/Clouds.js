@@ -1,10 +1,16 @@
+import Card from 'react-bootstrap/Card';
+
 // props contain cloudiness
 const Clouds = (props) => {
     return (
-        <div>
-            <h2 className="text-center">Clouds</h2>
-            <p>Cloudiness {props.cloudiness}</p>
-        </div >
+        <>
+            <Card style={{ width: '18rem' }}>
+                <Card.Body>
+                    <Card.Title>Clouds</Card.Title>
+                    <Card.Text>Cloudiness {props.cloudiness}</Card.Text>
+                </Card.Body>
+            </Card>
+        </>
     )
 }
 

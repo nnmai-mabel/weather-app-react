@@ -1,12 +1,18 @@
+import Card from 'react-bootstrap/Card';
+
 // props contain speed, direction, gust
 const Wind = (props) => {
     return (
-        <div>
-            <h2 className="text-center">Wind</h2>
-            <p>Speed {props.speed}</p>
-            <p>Direction {props.direction}</p>
-            <p>Gust {props.gust}</p>
-        </div >
+        <>
+            <Card style={{ width: '18rem' }}>
+                <Card.Body>
+                    <Card.Title>Wind</Card.Title>
+                    <Card.Text>Speed {props.speed}</Card.Text>
+                    <Card.Text>Direction {props.direction}</Card.Text>
+                    <Card.Text>Gust {props.gust}</Card.Text>
+                </Card.Body>
+            </Card>
+        </>
     )
 }
 

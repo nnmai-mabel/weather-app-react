@@ -1,17 +1,23 @@
+import Card from 'react-bootstrap/Card';
+
 // props contain temp, feelsLike, tempMin, tempMax, pressure, humidity, seaLevel, groundLevel
 const MainWeather = (props) => {
     return (
-        <div>
-            <h2 className="text-center">Main Weather</h2>
-            <p>Temperature {props.temp}</p>
-            <p>Feels like {props.feelsLike}</p>
-            <p>Temperature Min {props.tempMin}</p>
-            <p>Temperature Max {props.tempMax}</p>
-            <p>Pressure {props.pressure}</p>
-            <p>Humidity {props.humidity}</p>
-            <p>Sea Level {props.seaLevel}</p>
-            <p>Ground Level {props.groundLevel}</p>
-        </div >
+        <>
+            <Card style={{ width: '18rem' }}>
+                <Card.Body>
+                    <Card.Title>Main Weather</Card.Title>
+                    {/* <Card.Text>Temperature {props.temp}</Card.Text> */}
+                    <Card.Text>Feels like {props.feelsLike}</Card.Text>
+                    {/* <Card.Text>Temperature Min {props.tempMin}</Card.Text>
+                    <Card.Text>Temperature Max {props.tempMax}</Card.Text> */}
+                    <Card.Text>Pressure {props.pressure}</Card.Text>
+                    <Card.Text>Humidity {props.humidity}</Card.Text>
+                    <Card.Text>Sea Level {props.seaLevel}</Card.Text>
+                    <Card.Text>Ground Level {props.groundLevel}</Card.Text>
+                </Card.Body>
+            </Card>
+        </>
     )
 }
 
