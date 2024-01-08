@@ -4,14 +4,17 @@ import Card from 'react-bootstrap/Card';
 const Wind = (props) => {
     return (
         <>
-            <Card style={{ width: '18rem' }}>
-                <Card.Body>
-                    <Card.Title>Wind</Card.Title>
-                    <Card.Text>Speed {props.speed}</Card.Text>
-                    <Card.Text>Direction {props.direction}</Card.Text>
-                    <Card.Text>Gust {props.gust}</Card.Text>
-                </Card.Body>
-            </Card>
+            <div className="mt-4"> {/* Adding margin top and bottom */}
+
+                <Card style={{ width: '18rem' }}>
+                    <Card.Body>
+                        <Card.Title>Wind</Card.Title>
+                        <Card.Text>Speed {props.speed}m/s</Card.Text>
+                        <Card.Text>Direction {props.direction}</Card.Text>
+                        <Card.Text>Gust {props.gust}m/s</Card.Text>
+                    </Card.Body>
+                </Card>
+            </div>
         </>
     )
 }

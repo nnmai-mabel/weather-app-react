@@ -89,15 +89,30 @@ const Weather = () => {
 
     return (
         <div>
-            <h2 className="text-center">Weather</h2>
-            <div className="col-md-5 mb-2">
-                <input type="text" name="searchText" className="form-control" placeholder="Search Cities" />
+            {/* <h2 className="text-center">Weather</h2> */}
+            <div className="row justify-content-center mt-3">
+                <div className="col-md-5 mb-5 mb-md-0 mr-md-5 text-center">
+                    <input
+                        type="text"
+                        name="searchText"
+                        className="form-control"
+                        placeholder="Search Cities"
+                        style={{ paddingLeft: '20px', paddingRight: '20px' }}
+                    />
+                </div>
+                <div className="col-md-2 mb-5 mb-md-0 text-center">
+                    {/* Attach a ReactJS event to the button called “searchQuery” using the ReactJS syntax onClick={searchQuery} */}
+                    <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={searchQuery}
+                        style={{ margin: '0 30px' }}
+                    >
+                        Search
+                    </button>
+                </div>
             </div>
-            <div className="col-md-2 mb-2">
 
-                {/*Attach a ReactJS event to the button called “searchQuery” using the ReactJS syntax onClick={searchQuery}*/}
-                <button type="button" className="btn btn-primary" onClick={searchQuery}>Search</button>
-            </div>
 
             <CurrentWeather
                 data={data}

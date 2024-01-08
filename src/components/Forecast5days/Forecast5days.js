@@ -9,17 +9,19 @@ import ConvertUnixTimestampToDateTime from '../ConvertTime/ConvertUnixTimestampT
 import ShiftFromUTCToGMT from '../ConvertTime/ShiftFromUTCToGMT';
 
 const Forecast5days = ({ forecastData, forecastList, forecastCity }) => {
+    console.log(forecastList)
     return (
-        <div>
-            <h2 className="text-center">Forecast in 5 days</h2>
+        <>
+            
+            <h2 className="text-center mt-5">Forecast in 5 days every 3 hours</h2>
             <hr />
-            <p>{forecastData.cod}</p>
+            {/* <p>{forecastData.cod}</p>
             <p>Message {forecastData.message}</p>
             <p>A number of timestamps returned in the API response {forecastData.cnt}</p>
-            <h2>List</h2>
+            <h2>List</h2> */}
             {forecastData.cod === '200' ? (
                 <div>
-                    <CityForecast
+                    {/* <CityForecast
                         name={forecastCity.name}
                         coordinate={forecastCity.coord}
                         country={forecastCity.country}
@@ -27,8 +29,8 @@ const Forecast5days = ({ forecastData, forecastList, forecastCity }) => {
                         timezone={ShiftFromUTCToGMT(forecastCity.timezone)}
                         sunrise={ConvertUnixTimestampToDateTime(forecastCity.sunrise)}
                         sunset={ConvertUnixTimestampToDateTime(forecastCity.sunset)}
-                    />
-
+                    /> */}
+                    
                     <Container>
                         <Row>
                             {forecastList.map((object, index) => (
@@ -57,7 +59,7 @@ const Forecast5days = ({ forecastData, forecastList, forecastCity }) => {
             ) : ("forecast list not avai")
             }
 
-        </div >
+        </>
     )
 }
 
